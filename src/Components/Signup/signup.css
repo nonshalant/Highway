@@ -1,0 +1,49 @@
+.signup{
+    padding: 2%;
+    width: 30%;
+    margin: auto;
+    margin-top: 10%;
+    border: 1px solid black;
+    background-color: #fed9b7;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.signup p{
+    padding: 1% 0;
+}
+.signup_container{
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+.signup_heading h1{
+    color: black;
+    font-family: fantasy;
+    font-size: 5rem;
+}
+.signup_heading button{
+    background-color: #00afb9;
+}
+.user_signup-credentials form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.user_signup-credentials form input{
+    font-size: 2.1rem;
+    padding: 2% 1%;
+}
+.user_signup-credentials form button{
+    background-color: #00afb9;
+    padding: 2% 1%;
+}
+.login_redirect{
+    text-align: center;
+}

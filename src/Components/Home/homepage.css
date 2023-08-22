@@ -1,0 +1,135 @@
+.setup_container{
+    padding: 1%;
+    text-align: center;
+}
+
+.setup_container .heading{
+    font-size: 4rem;
+}
+
+.setup_container span{
+    font-style: italic;
+    font-weight: 600;
+}
+
+.setup_container .create_profile{
+    font-size: 2.5rem;
+}
+
+.create_profile button{
+    background-color: skyblue;
+    margin: auto;
+    font-size: 2rem;
+    padding: 1% 1.5%;
+    margin-top: 1%;
+}
+
+.home-main-container {
+    width: 80%;
+    margin: auto;
+}
+
+/* heading  */
+
+.home-heading {
+    /* background-color: whitesmoke; */
+    margin: auto;
+    text-align: center;
+    padding: 1%;
+    margin-top: 1%;
+    border-radius: 20px;
+}
+
+.home-heading-inner {
+    color: black;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 3rem;
+}
+
+.home-banner {
+    height: 300px;
+    width: 100%;
+    border: 1px solid;
+    margin: 2.5% 0;
+}
+
+.home-banner img {
+    width: 100%;
+    height: inherit;
+}
+
+/* Browse Title  */
+
+.scroll {
+    display: flex;
+    gap: 10px;
+}
+
+.browse-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.browse-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+}
+
+.browse-title {
+  display: flex;
+  gap: 30px;
+}
+
+.shop {
+    background-color: whitesmoke;
+}
+
+.shop:hover {
+    cursor: pointer;
+}
+
+
+/* Small devices (up to 480px) */
+@media screen and (max-width: 480px) {
+    .home-main-container { 
+        width: 100%;
+        scrollbar-width: none;
+   }
+   body::-webkit-scrollbar {
+    display: none;
+}
+}
+
+/* Medium devices (481px to 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Your styles here */
+}
+
+/* Tablets and small laptops (769px to 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Your styles here */
+}
+
+/* Large laptops and desktops (1025px to 1280px) */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    /* Your styles here */
+}
+
+/* Extra-large devices (1281px and above) */
+@media screen and (min-width: 1281px) {
+    /* Your styles here */
+}
+
+/* High-density displays (Retina, etc.) */
+@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* High-resolution styles and images */
+}
+
+/* Print styles */
+@media print {
+    /* Your print-specific styles here */
+}
