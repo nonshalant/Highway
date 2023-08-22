@@ -6,6 +6,10 @@ const session = require('express-session');
 const crypto = require('crypto');
 const sessionSecret = crypto.randomBytes(32).toString('hex');
 require('dotenv').config();
+const http = require('http'); 
+const server = http.createServer();
+const io = require('socket.io')(server)
+
 
 // setup express 
 const app = express();
@@ -35,7 +39,28 @@ app.use(session({
     },
 }));
 
-// Defining the Restfull Routes 
+// IO configs 
+io.on('connection', (socket) => {
+    console.log('Client connected');
+  
+    socket.on('message', (message) => {
+      console.log(`Received: ${message}`);
+      // Broadcast the message to all connected clients
+      io.emit('message', message);
+    });
+  
+    socket.on('disconnect', () => {
+      console.log('Client disconnected');
+    });
+});
+  
+const IoPort = 8000;
+server.listen(IoPort, () => {
+console.log(`WebSocket server is listening on IoPort ${IoPort}`);
+});
+
+
+// Defining the Restfull Routes  
 app.use('/user', require('./Routes/api/users'));
 app.use('/auth', require('./Routes/api/auth'));
 app.use('/profile', require('./Routes/api/profile'));
@@ -51,6 +76,4 @@ app.set('port', 5000)
 
 app.listen(PORT, ()=>{
     console.log('listen')  
-});
- 
-  
+});  
