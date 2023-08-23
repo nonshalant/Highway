@@ -134,27 +134,26 @@
 .edit-form {
     position: absolute;
     background-color: whitesmoke;
-    width: 500px;
-}
-
-.edit-form .dropdown {
+    width: 600px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
     padding: 2%;
 }
 
 .edit-form-details {
     width: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     margin: auto;
+    height: 100%;
 }
 
-.edit-form-details .edit-form {
+.edit-form-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: space-between;
+    height: 100%;
 }
 
-.edit-form-details input {
+.edit-form .dropdown {
     padding: 2%;
 }

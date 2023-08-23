@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getOrderReview } from '../../Actions/cart'
 import { getUserAddress } from '../../Actions/address'
 
-const OrderReviewLeft = () => {
+const OrderReviewLeft = ({setFormComplete}) => {
     const dispatch = useDispatch()
     const [renderEditForm, setRenderEditForm] = useState(false)
     const [deliveryInstructions, setDeliveryInstructions] = useState({})
@@ -17,6 +17,14 @@ const OrderReviewLeft = () => {
     const handleEditAddress = () => {
         setRenderEditForm(true);
     };
+
+    if(userAddress){
+        if(!userAddress.address.streetAddress){
+            setFormComplete(false)
+        }else{
+            setFormComplete(true)
+        }
+    }
 
     useEffect(()=>{
         dispatch(getUserAddress())
@@ -89,7 +97,7 @@ const OrderReviewLeft = () => {
                                         <h2>{item.size}</h2>
                                    
                                         <div className="review-cart-price">
-                                            ${item.price * item.amount}
+                                            ${item.price}
                                         </div>
                                     </>
                                 </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navigation from '../Navigation/Navigation'
 import OrderReviewLeft from './OrderReviewRight'
 import OrderReviewRight from './OrderReviewLeft'
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const OrderReview = () => {
   const navigate = useNavigate();
+  const [formComplete, setFormComplete] = useState();
 
   useEffect(()=>{
       if(!localStorage.token){
@@ -18,8 +19,8 @@ const OrderReview = () => {
     <div className='blur-effect'>
         {localStorage.token && <Navigation />}
         <div className='order-review'>
-            <OrderReviewLeft />
-            <OrderReviewRight />
+            <OrderReviewLeft formComplete={formComplete} />
+            <OrderReviewRight setFormComplete={setFormComplete}/>
         </div>
     </div>
   )

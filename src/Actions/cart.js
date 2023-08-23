@@ -46,7 +46,8 @@ export const removeItem = (productName) => async dispatch => {
 // selected items being sent for order review 
 export const sendToOrderReview = (itemsSelected) => async dispatch => { 
   try {
-    await axios.post('http://localhost:5000/cart/order-review', {itemsSelected})
+    const itemsTotalPrice = itemsSelected.map(item => item.price * item.amount)
+    await axios.post('http://localhost:5000/cart/order-review', {itemsSelected, itemsTotalPrice})
   } catch (error) {
     console.error(error)
   }

@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000
        
 // Connect socketIo 
 connectIo();
-const IoPort = 8000;
+const IoPort = 8001;
 
 // Middleware 
 app.use(express.json({extended: true}))

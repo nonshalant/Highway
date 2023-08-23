@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { saveAddressData, getUserAddress } from '../../Actions/address';
 import { useDispatch, useSelector } from 'react-redux';
+import AutoComplete from '../Map/AutoComplete';
 
 const Address = () => {
   const [addressData, setAddressData] = useState({
@@ -65,7 +66,8 @@ const Address = () => {
       {
         renderAddressForm === false && 
         <div className=''>
-          <form className="address-form" onSubmit={handleSubmit}>
+          <AutoComplete />
+          {/* <form className="address-form" onSubmit={handleSubmit}>
             <div className="input-container">
               <label htmlFor="street">Street Address</label>
               <input
@@ -128,7 +130,7 @@ const Address = () => {
                 />
               </div>
             <input className='address-submit' type="submit" value="Submit" />
-          </form>
+          </form> */}
         </div>
       }
     </div>

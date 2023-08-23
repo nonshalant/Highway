@@ -46,7 +46,7 @@ const ProductModal = () => {
                <div className="cart-animation-container">
                 {
                     cartItems.cart.map(item => 
-                        <div className='cart-animation-items'>
+                        <div key={item.productName} className='cart-animation-items'>
                             <div className="image">
                                 <img src={item.image} alt="" />
                             </div>

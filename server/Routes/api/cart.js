@@ -154,18 +154,19 @@ router.get('/order-review', auth, async(req, res) => {
 router.post('/order-review', auth, async (req, res) => {
   try {
     const userId = req.user.id;
-    const cartItemsToReview = req.body.itemsSelected;
+    const itemsTotalPrice = req.body.itemsTotalPrice;
+    const cartItemsToReview = req.body.itemsSelected;  
     let profile = await Profile.findOne({ _id: userId });
 
     if (!profile) {
-      return res.status(404).json({ error: 'Profile not found' });
+      return res.status(404).json({ error: 'Profile not found' }); 
     }  
 
     const arr = cartItemsToReview.map(item => ({
       storeName: item.storeName,
       productName: item.productName,
       amount: item.amount,
-      price: item.price,
+      price: item.price * item.amount,
       size: item.size 
     }));
 

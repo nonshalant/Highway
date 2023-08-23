@@ -9,7 +9,6 @@ import {
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
-import { useDispatch } from "react-redux";
 
 export default function CheckoutForm() {
   const navigate = useNavigate();

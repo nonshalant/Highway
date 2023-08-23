@@ -31,7 +31,7 @@ const EditForm = ({setRenderEditForm, setDeliveryInstructions, userAddress}) => 
             <AiFillCloseCircle onClick={closeEditForm} size={20}/>
         </div>
         <div className="edit-form-details">
-            <form className='edit-form' onSubmit={handleSubmit}>
+            <form className='edit-form-container' onSubmit={handleSubmit}>
                 <h2><FaLocationArrow size={10}/> {userAddress.address.streetAddress} {userAddress.address.city} {userAddress.address.zip}</h2>
                 <h2>Delivery Details</h2>
                 <select onChange={handleSelect} value={editFormInputs.meetOption} className="dropdown">

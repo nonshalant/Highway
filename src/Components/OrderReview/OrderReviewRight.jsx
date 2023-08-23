@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {createPaymentIntentAction} from '../../Actions/checkout'
 import { getCurrentProfile } from '../../Actions/profile'
 
-const OrderReviewRight = () => {
+const OrderReviewRight = ({formComplete}) => {
     const cartItems = useSelector(state => state.profile.orderReviewCart);
     const shipping = useSelector(state => state.profile.address);
     const user = useSelector(state => state.profile.user)
@@ -66,7 +66,7 @@ const OrderReviewRight = () => {
         <div className="order-review-right-outer">
             <div className="order-review-payment-confirm">
                 <div className="">
-                    <Link to="/create-payment-intent"><button onClick={createPaymentIntent}>Continue To Payment</button></Link>
+                    <Link to="/create-payment-intent"><button disabled={!formComplete} onClick={createPaymentIntent}>Continue To Payment</button></Link>
                 </div>
                 <p>By proceeding to payment, you have reviewed and agree to the Terms of Use and acknowledge the Privacy Notice. You are at least 18 years of age.</p>
             </div>
