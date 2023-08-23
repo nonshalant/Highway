@@ -19,6 +19,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import OrderReview from './Components/OrderReview/OrderReview';
 import store from './store';
+import PaymentSuccess from './Components/Checkout/PaymentSuccess';
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -59,6 +60,7 @@ function App() {
               <PaymentForm />
             </Elements>
           ) : null}> </Route>
+          <Route path='/payment-success' element={<PaymentSuccess />}> </Route>
           <Route path='/signup' element={<SignUp />}> </Route>
           <Route path='/order-review' element={<OrderReview />}> </Route>
           <Route path='/home' element={<Home />}> </Route>

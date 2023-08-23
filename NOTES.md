@@ -83,4 +83,87 @@ Uber eats Restaurant portal - https://www.youtube.com/watch?v=DT4nO1Sp_xE
 FIND AGE VALIDATION
 
 
-*** CHECK LOGIN AUTH ****
+# Highway
+
+Algorithm after payment is processed
+
+1. **Customer Places an Order:**
+   The customer browses your platform, adds products to the cart, and proceeds to checkout. They provide their delivery details and complete the purchase.
+
+2. **Order Created in the Database:**
+   When the customer completes the checkout process, an order is created in your database. The order status is initially set to "Pending" or "Processing."
+
+3. **Backend Updates Order Status:**
+   After the order is created, your backend logic (API endpoint or service) updates the order status to "Processing" and triggers the Socket.IO event to notify clients about the order status update.
+
+   ```javascript
+   // Inside your API route or controller
+   app.post('/create-order', (req, res) => {
+     // Create the order in the database and set status to "Processing"
+     const orderId = createOrder(req.body);
+
+     // Emit an event to notify clients about the updated order status
+     io.emit('order-status-updated', {
+       orderId,
+       newStatus: 'Processing',
+     });
+
+     res.json({ message: 'Order created' });
+   });
+   ```
+
+4. **Client Receives Real-Time Update:**
+   On the client side (customer's browser or mobile app), the Socket.IO connection is established, and the client is listening for the "order-status-updated" event. When the event is received, the client updates the UI to reflect the new order status.
+
+   ```javascript
+   import React, { useEffect, useState } from 'react';
+   import io from 'socket.io-client';
+
+   const OrderStatus = ({ orderId }) => {
+     const [orderStatus, setOrderStatus] = useState('');
+
+     useEffect(() => {
+       const socket = io('http://localhost:3000'); // Replace with your server URL
+
+       socket.on('order-status-updated', (data) => {
+         if (data.orderId === orderId) {
+           setOrderStatus(data.newStatus);
+         }
+       });
+
+       return () => {
+         socket.disconnect();
+       };
+     }, []);
+
+     return (
+       <div>
+         <p>Order Status: {orderStatus}</p>
+       </div>
+     );
+   };
+
+   export default OrderStatus;
+   ```
+
+5. **Order Processing and Tracking:**
+   As the order moves through different stages (e.g., packed, out for delivery), your backend logic updates the order status accordingly and emits Socket.IO events to notify clients about these changes. Clients connected to the Socket.IO server will receive these events and update the UI in real time.
+
+6. **Delivery Updates and Notifications:**
+   When the order is out for delivery, your delivery tracking system can use Socket.IO to provide real-time updates on the driver's location and estimated delivery time. Customers can track the progress of their order without manual refreshes.
+
+7. **Order Delivered:**
+   Once the order is successfully delivered, your backend logic updates the order status to "Delivered" and emits the corresponding Socket.IO event. Clients connected to the server receive the event and update their UI accordingly.
+
+8. **Final Status Display:**
+   The customer's UI displays the final order status as "Delivered," ensuring that they are kept informed in real time.
+
+By integrating Socket.IO, you provide a seamless and real-time experience for your customers, enabling them to stay updated on their order status without having to manually refresh the page. The use of real-time communication enhances customer satisfaction and engagement on your delivery platform.
+
+
+CHANGE STREAMS WITH MONGO TO LISTEN TO CHANGES INSIDE COLLECTIONS
+
+Clear cart on successful payment
+
+TO DO:
+delivery info saving incorrect customer info. (Order Number, totalAmount

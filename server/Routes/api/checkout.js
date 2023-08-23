@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const stripe = require("stripe")("sk_test_51MIzYED8fYLB50BOmp38wFzqPNOR8IXI1jMV5PkNOwVWRmhCMQIi6npi0n4mAKmFunjRu5i8iZlkVwS0OdtiDuax0057bWdFNC");
+const stripe = require("stripe")
+("sk_test_51MIzYED8fYLB50BOmp38wFzqPNOR8IXI1jMV5PkNOwVWRmhCMQIi6npi0n4mAKmFunjRu5i8iZlkVwS0OdtiDuax0057bWdFNC");
 
 const calculateOrderAmount = (totalAmount) => {
   const total = totalAmount * 100;
@@ -37,12 +38,12 @@ router.post("/", async (req, res) => {
     automatic_payment_methods: {
       enabled: true,
     }, 
-    customer: customer.id,
+    customer: customer.id, 
   });
 
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
-});
+}); 
 
 module.exports = router;

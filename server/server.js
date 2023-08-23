@@ -6,10 +6,7 @@ const session = require('express-session');
 const crypto = require('crypto');
 const sessionSecret = crypto.randomBytes(32).toString('hex');
 require('dotenv').config();
-const http = require('http'); 
-const server = http.createServer();
-const io = require('socket.io')(server)
-
+const connectIo = require('./webScoket/socketIo')
 
 // setup express 
 const app = express();
@@ -17,6 +14,10 @@ const app = express();
 // Connect DB
 connectDB();
 const PORT = process.env.PORT || 5000
+       
+// Connect socketIo 
+connectIo();
+const IoPort = 8000;
 
 // Middleware 
 app.use(express.json({extended: true}))
@@ -39,40 +40,24 @@ app.use(session({
     },
 }));
 
-// IO configs 
-io.on('connection', (socket) => {
-    console.log('Client connected');
-  
-    socket.on('message', (message) => {
-      console.log(`Received: ${message}`);
-      // Broadcast the message to all connected clients
-      io.emit('message', message);
-    });
-  
-    socket.on('disconnect', () => {
-      console.log('Client disconnected');
-    });
-});
-  
-const IoPort = 8000;
-server.listen(IoPort, () => {
-console.log(`WebSocket server is listening on IoPort ${IoPort}`);
-});
-
-
 // Defining the Restfull Routes  
 app.use('/user', require('./Routes/api/users'));
 app.use('/auth', require('./Routes/api/auth'));
 app.use('/profile', require('./Routes/api/profile'));
-app.use('/cart', require('./Routes/api/cart'))
-app.use('/favorite', require('./Routes/api/favorite'))
-app.use('/address', require('./Routes/api/address'))
-app.use('/create-payment-intent', require('./Routes/api/checkout'))
+app.use('/cart', require('./Routes/api/cart'));
+app.use('/favorite', require('./Routes/api/favorite'));
+app.use('/address', require('./Routes/api/address')); 
+app.use('/create-payment-intent', require('./Routes/api/checkout'));
+app.use('/payment-success', require('./Routes/api/success'));
  
 app.use(express.urlencoded({extended:false}));
 app.use(routes); 
 
 app.set('port', 5000)
+
+app.listen(IoPort, () => {
+    console.log(`WebSocket server is listening on IoPort ${IoPort}`);
+    });
 
 app.listen(PORT, ()=>{
     console.log('listen')  

@@ -9,3 +9,11 @@ export const createPaymentIntentAction = (customerDetails) => async dispatch => 
         console.error(error)
     }
 }
+
+export const handlePaymentSuccess = () => async dispatch => {
+    try {
+        const response = await axios.post('http://localhost:5000/payment-success')
+    } catch (error) {
+        console.error(error);
+    }
+} 
