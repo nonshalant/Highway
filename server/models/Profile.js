@@ -1,12 +1,13 @@
 const mongoose = require("mongoose")
 
 const ProfileSchema = new mongoose.Schema({
-    address: {
-        streetAddress: String,
-        aptSuiteFloor: String,
-        city: String,
-        zip: String,
-    },
+    // address: {
+    //     streetAddress: String,
+    //     aptSuiteFloor: String,
+    //     city: String,
+    //     zip: String,
+    // },
+    address: String,
     cart: {
         inventory: [
             {

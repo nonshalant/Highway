@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { saveAddressData, getUserAddress } from '../../Actions/address';
 import { useDispatch, useSelector } from 'react-redux';
-import AutoComplete from '../Map/AutoComplete';
+import AddressAutocomplete from '../Map/AddressAutoComplete';
 
 const Address = () => {
-  const [addressData, setAddressData] = useState({
-    clientStreet: '',
-    clientAsf: '',
-    clientCity: '',
-    clientState: '',
-    clientZip: '',
-  });
+  // const [addressData, setAddressData] = useState({
+  //   clientStreet: '',
+  //   clientAsf: '',
+  //   clientCity: '',
+  //   clientState: '',
+  //   clientZip: '',
+  // });
 
-  const { clientStreet, clientAsf, clientCity, clientState, clientZip } = addressData;
+  // const { clientStreet, clientAsf, clientCity, clientState, clientZip } = addressData;
   const [renderAddressForm, setRenderAddressForm] = useState(true);
-  const [address, setAddress] = useState();
+  const [addressTest, setAddressTest] = useState();
+  const [address, setAddress] = useState('')
   const isLoading = useSelector(state => state.profile.loading);
   const addressFromReduxState = useSelector(state => state.profile.address);
   const dispatch = useDispatch();
@@ -23,25 +24,30 @@ const Address = () => {
     setRenderAddressForm(!renderAddressForm);
   };
 
-  const handleChange = (e) => {
-    const copyAddressData = { ...addressData };
-    copyAddressData[e.target.id] = e.target.value;
-    setAddressData(copyAddressData);
-  };
+  // const handleChange = (e) => {
+  //   const copyAddressData = { ...addressData };
+  //   copyAddressData[e.target.id] = e.target.value;
+  //   setAddressData(copyAddressData);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setRenderAddressForm(!renderAddressForm)
-    dispatch(saveAddressData(addressData))
+    dispatch(saveAddressData(addressTest))
   };  
 
-  useEffect(() => {
-    if (addressFromReduxState) {
-      setAddress(addressFromReduxState);
-    }
-    dispatch(getUserAddress());
-  }, [addressFromReduxState]);
+  // useEffect(() => {
+  //   if (addressFromReduxState) {
+  //     setAddress(addressFromReduxState);
+  //   }
+  // }, [addressFromReduxState]);
 
+  useEffect(()=>{
+    dispatch(getUserAddress());
+    setAddress(addressFromReduxState);
+    
+  },[addressFromReduxState])
+ 
   return (
     <div className='address'>
       <div className="add-new-address">
@@ -55,7 +61,7 @@ const Address = () => {
             <div>
               {address && address.address ? (
                 <>
-                  <p>{address.address.streetAddress} {address.address.city} {address.address.zip}</p>
+                  <p>{address.address}</p>
                 </>
               ) : null}
             </div>
@@ -66,9 +72,9 @@ const Address = () => {
       {
         renderAddressForm === false && 
         <div className=''>
-          <AutoComplete />
-          {/* <form className="address-form" onSubmit={handleSubmit}>
-            <div className="input-container">
+          <form className="address-form" onSubmit={handleSubmit}>
+            <AddressAutocomplete setAddressTest={setAddressTest}/>
+            {/* <div className="input-container">
               <label htmlFor="street">Street Address</label>
               <input
                 onChange={handleChange}
@@ -128,9 +134,9 @@ const Address = () => {
                   placeholder='11211'
                   required
                 />
-              </div>
+              </div> */}
             <input className='address-submit' type="submit" value="Submit" />
-          </form> */}
+          </form>
         </div>
       }
     </div>

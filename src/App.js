@@ -20,7 +20,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import OrderReview from './Components/OrderReview/OrderReview';
 import store from './store';
 import PaymentSuccess from './Components/Checkout/PaymentSuccess';
-import Map from './Components/Map/Map';
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -56,7 +55,7 @@ function App() {
         <Alert />
         <Routes>
 
-          <Route path='/map' element={<Map />}> </Route>
+          {/* <Route path='/map' element={<Map />}> </Route> */}
           <Route path='/' element={<LoginPage />}> </Route>
           <Route path='/create-payment-intent' element={clientSecret ? (
             <Elements options={options} stripe={stripePromise}>

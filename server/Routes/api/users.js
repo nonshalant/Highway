@@ -58,7 +58,6 @@ router.post('/signup', [check('fullName', 'Name is required!').not().isEmpty(),
                 if(error) throw error;
                 res.json({token})
             })
-    
         } 
     }catch (error) {
         console.error(error.message)

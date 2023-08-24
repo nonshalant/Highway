@@ -42,7 +42,7 @@ const OrderReviewRight = ({formComplete}) => {
         const customerDetails = {
             totalAmount,
             selectedTip,
-            shipping,
+            shipping: shipping.address,
             user
         }
         dispatch(createPaymentIntentAction(customerDetails))
@@ -107,7 +107,7 @@ const OrderReviewRight = ({formComplete}) => {
             <div className="order-review-total">
                 <p>Total</p>
                 {subTotal !== undefined && (
-                    <p>${subTotal + selectedTip + 5}</p>
+                    <p>${subTotal + selectedTip}</p>
                 )}
             </div>
         </div>

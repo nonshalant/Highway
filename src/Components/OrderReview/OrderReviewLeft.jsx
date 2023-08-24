@@ -19,7 +19,7 @@ const OrderReviewLeft = ({setFormComplete}) => {
     };
 
     if(userAddress){
-        if(!userAddress.address.streetAddress){
+        if(!userAddress.address){
             setFormComplete(false)
         }else{
             setFormComplete(true)
@@ -45,14 +45,13 @@ const OrderReviewLeft = ({setFormComplete}) => {
                     </div>
                     <div className="order-review-inner">
                         {
-                            !userAddress.address.streetAddress ?
+                            !userAddress.address ?
                             <>
                                <>Where do you want to ship this to?</> 
                             </>
                             :
                             <>
-                                <p>{userAddress.address.streetAddress}</p>
-                                <p>{userAddress.address.streetAddress} {userAddress.address.city} {userAddress.address.zip}</p>
+                                <p>{userAddress.address}</p>
                             </>
                         }
                     </div>

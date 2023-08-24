@@ -23,7 +23,7 @@ router.post('/', auth, async(req, res)=>{
         }else {
             deliveryOrder = new DeliveryOrder({
                 isSuccessful: 'true',
-                pickUpLocation: profile.address.streetAddress,
+                pickUpLocation: profile.address,
                 customer: user.fullName,
                 orderNumber: randomNumber,
                 items: orderedItems.map(item => ({
@@ -34,7 +34,7 @@ router.post('/', auth, async(req, res)=>{
                 status: 'Processing',
                 totalAmount: orderedItemsTotal,
                 deliveryInformation: {
-                    address: '119-56 Farmers Blvd',
+                    address: profile.address,
                     instructions: 'CALL ME WHEN YOU ARRIVE! thanks :)',
                 }
             })

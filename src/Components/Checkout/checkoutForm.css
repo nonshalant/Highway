@@ -112,12 +112,13 @@ form {
 }
 
 .delivery-info {
+    height: 90vh;
     width: 25%;
     background-color: #2b6569;
 }
 
 .delivery-info-container {
-    width: fit-content;
+    width: 80%;
     margin: auto;
     height: 100%;
     display: flex;

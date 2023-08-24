@@ -1,22 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer'
 import {BsFillCircleFill} from 'react-icons/bs'
 import {RiCheckboxBlankCircleLine} from 'react-icons/ri'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handlePaymentSuccess } from '../../Actions/checkout';
+import Map from '../Map/Map';
+import { getUserAddress } from '../../Actions/address';
 
 const PaymentSuccess = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [deliveryTo, setDeliveryTo] = useState('');
+  const deliveryAddress = useSelector(state => state.profile.address);
  
   useEffect(()=>{
     if(!localStorage.token){
       navigate('/');
     };
     dispatch(handlePaymentSuccess())
+    dispatch(getUserAddress())
   },[navigate]);
+
+
+  useEffect(()=>{
+    if(deliveryAddress && deliveryAddress.address){
+    setDeliveryTo(deliveryAddress.address)
+  }
+  },[deliveryAddress])
   return (
     <>
       {localStorage.token && <Navigation /> }
@@ -56,7 +68,7 @@ const PaymentSuccess = () => {
             </div>
           </div>
           <div className="map-container">
-            <img className='map' src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg" alt="" />
+            <Map deliveryAddress={deliveryTo}/>
           </div>
         </div>
         <Footer />

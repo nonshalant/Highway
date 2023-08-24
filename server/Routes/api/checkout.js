@@ -14,13 +14,15 @@ router.post("/", async (req, res) => {
   // Calculate tip amount in cents
   const tipAmountInCents = selectedTip * 100;
 
+  console.log(shipping)
+
   const customer = await stripe.customers.create({
     shipping: {  
       name: user.fullName,
       address: {  
-        city: shipping.address.city,
-        line1: shipping.address.streetAddress, 
-        postal_code: shipping.address.zip
+        city: shipping,
+        line1: shipping, 
+        postal_code: shipping
       }
     },
     email: user.email,

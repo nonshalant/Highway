@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import './signup.css';
 import {connect} from 'react-redux'
@@ -15,6 +15,7 @@ const SignUp =({setAlert, register, isAuthenticated})=> {
         userPassword: '',
         userPassword2: '',
         userNumber: '',
+        userAddress: '',
     })
 
     const {fullName, email, userName, userPassword, userPassword2, userNumber} = data;
@@ -59,6 +60,8 @@ const SignUp =({setAlert, register, isAuthenticated})=> {
                     <input required type="password" name="userPassword2" id="userPassword2" placeholder='Retype Password' onChange={(e)=>handleChange(e)} value={userPassword2}/>
 
                     <input required type="text" name="userNumber" id="userNumber" placeholder="Enter Your Number" onChange={(e)=>handleChange(e)} value={userNumber}/>
+
+                    <input required type="text" name="userNumber" id="userNumber" placeholder="Enter Your Delivery Address" onChange={(e)=>handleChange(e)} value={userNumber}/>
 
                     <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>
                     <button>Sign Up</button>

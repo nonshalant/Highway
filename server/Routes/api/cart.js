@@ -46,7 +46,7 @@ router.post('/', auth, async (req, res) => {
               description: product.description,
               image: product.image,
             },
-          ],
+          ], 
         },
       });
     } else {
@@ -137,7 +137,7 @@ router.patch('/remove/:productName', auth, async(req, res) => {
 });
 
 // get the session cart with the cart items for order review  
-router.get('/order-review', auth, async(req, res) => {
+router.get('/order-review', auth, async(req, res) => { 
   try {
     const userId = req.user.id;
     const profile = await Profile.findOne({_id: userId});
@@ -154,7 +154,6 @@ router.get('/order-review', auth, async(req, res) => {
 router.post('/order-review', auth, async (req, res) => {
   try {
     const userId = req.user.id;
-    const itemsTotalPrice = req.body.itemsTotalPrice;
     const cartItemsToReview = req.body.itemsSelected;  
     let profile = await Profile.findOne({ _id: userId });
 
