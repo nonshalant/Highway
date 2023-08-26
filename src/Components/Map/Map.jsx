@@ -43,9 +43,7 @@ const Map = ({ deliveryAddress }) => {
   return (
     <div>
       <GoogleMap zoom={15} center={{ lat: latitude, lng: longitude }} mapContainerClassName="map-container">
-        <Marker 
-          position={{ lat: latitude, lng: longitude }}
-        />
+        <Marker position={{ lat: latitude, lng: longitude }}/>
       </GoogleMap>
     </div>
   );

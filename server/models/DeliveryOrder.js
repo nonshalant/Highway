@@ -46,6 +46,7 @@ const deliveryOrderSchema = new mongoose.Schema({
     deliveryInformation: {
         address: String,
         instructions: String,
+        meetOption: String,
         estimatedDeliveryTime: Date,
     },
     timestamp: {

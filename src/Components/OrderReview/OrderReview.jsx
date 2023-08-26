@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import Navigation from '../Navigation/Navigation'
-import OrderReviewLeft from './OrderReviewRight'
-import OrderReviewRight from './OrderReviewLeft'
-import './orderReview.css'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import Navigation from '../Navigation/Navigation';
+import OrderReviewLeft from './OrderReviewRight';
+import OrderReviewRight from './OrderReviewLeft';
+import { useNavigate } from 'react-router-dom';
+import './orderReview.css';
 
 const OrderReview = () => {
   const navigate = useNavigate();

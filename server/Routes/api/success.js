@@ -29,13 +29,13 @@ router.post('/', auth, async(req, res)=>{
                 items: orderedItems.map(item => ({
                     itemName: item.productName,
                     quantity: item.amount,
-                    price: item.price * item.amount, 
+                    price: item.price, 
                 })),
                 status: 'Processing',
                 totalAmount: orderedItemsTotal,
                 deliveryInformation: {
                     address: profile.address,
-                    instructions: 'CALL ME WHEN YOU ARRIVE! thanks :)',
+                    instructions: '',
                 }
             })
         }

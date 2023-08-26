@@ -167,3 +167,5 @@ Clear cart on successful payment
 
 TO DO:
 delivery info saving incorrect customer info. (Order Number, totalAmount
+
+RECENTLY SEARCHED fet

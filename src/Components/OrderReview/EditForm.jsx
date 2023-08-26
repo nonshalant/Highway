@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import { FaLocationArrow } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { saveDeliveryInstructions } from '../../Actions/checkout';
 
 const EditForm = ({setRenderEditForm, setDeliveryInstructions, userAddress}) => {
+    const dispatch = useDispatch();
     const [editFormInputs, setEditFormInputs] = useState({
         meetOption: 'Leave At Door',
-        instructions: ''
+        instructions: '',
+        address: userAddress.address
     });
 
     const closeEditForm = () => {
@@ -16,6 +20,7 @@ const EditForm = ({setRenderEditForm, setDeliveryInstructions, userAddress}) => 
         e.preventDefault()
         setDeliveryInstructions(editFormInputs)
         setRenderEditForm(false)
+        dispatch(saveDeliveryInstructions(editFormInputs))
     };
 
     const handleSelect = (e) => {
@@ -32,7 +37,7 @@ const EditForm = ({setRenderEditForm, setDeliveryInstructions, userAddress}) => 
         </div>
         <div className="edit-form-details">
             <form className='edit-form-container' onSubmit={handleSubmit}>
-                <h2><FaLocationArrow size={10}/> {userAddress.address.streetAddress} {userAddress.address.city} {userAddress.address.zip}</h2>
+                <h2><FaLocationArrow size={10}/> {userAddress.address}</h2>
                 <h2>Delivery Details</h2>
                 <select onChange={handleSelect} value={editFormInputs.meetOption} className="dropdown">
                     <option value="Leave At Door">Leave At Door</option>

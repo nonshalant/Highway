@@ -54,7 +54,7 @@ const OrderReviewRight = ({formComplete}) => {
 
     useEffect(() => {
         if (cartItems && cartItems.cart) {
-            const cartItemsPrice = cartItems.cart.map(items => items.amount * items.price);
+            const cartItemsPrice = cartItems.cart.map(items => items.price);
             setSubTotal(cartItemsPrice.reduce((acc, currVal) => {
                 return acc + currVal;
             }, 0));

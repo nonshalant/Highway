@@ -1,4 +1,4 @@
-import { PROFILE_ERROR, ADD_ADDRESS, PRODUCT_ID, ADD_TO_CART, RETRIEVE_CART, FETCH_FAVORITE_STORES, INCREMENT_CART, DECREMENT_CART, RETREIVE_ADDRESS, GET_PROFILE, REVIEW_ORDER_ITEMS, COMPLETE_PURCHASE } from "../Actions/types";
+import { PROFILE_ERROR, ADD_ADDRESS, PRODUCT_ID, ADD_TO_CART, RETRIEVE_CART, FETCH_FAVORITE_STORES, INCREMENT_CART, DECREMENT_CART, RETREIVE_ADDRESS, GET_PROFILE, REVIEW_ORDER_ITEMS, COMPLETE_PURCHASE, DELIVERY_INSTRUCTIONS } from "../Actions/types";
 
 const initialState = {
   profile: null,
@@ -27,6 +27,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         address: payload,
+        loading: false
+      };
+    case DELIVERY_INSTRUCTIONS:
+      return {
+        ...state,
+        instructions: payload,
         loading: false
       };
     case FETCH_FAVORITE_STORES:

@@ -1,20 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const auth = require('../../middleware/auth')
+const DeliveryOrder = require("../../models/DeliveryOrder");
+const Profile = require("../../models/Profile");
+
+// add to env file
 const stripe = require("stripe")
-("sk_test_51MIzYED8fYLB50BOmp38wFzqPNOR8IXI1jMV5PkNOwVWRmhCMQIi6npi0n4mAKmFunjRu5i8iZlkVwS0OdtiDuax0057bWdFNC");
+("sk_test_51MIzYED8fYLB50BOmp38wFzqPNOR8IXI1jMV5PkNOwVWRmhCMQIi6npi0n4mAKmFunjRu5i8iZlkVwS0OdtiDuax0057bWdFNC"); 
 
 const calculateOrderAmount = (totalAmount) => {
   const total = totalAmount * 100;
   return total; 
 };
 
-router.post("/", async (req, res) => { 
+router.post("/", async(req, res) => { 
   const { totalAmount, selectedTip, shipping, user } = req.body.customerDetails;
 
   // Calculate tip amount in cents
   const tipAmountInCents = selectedTip * 100;
-
-  console.log(shipping)
 
   const customer = await stripe.customers.create({
     shipping: {  
@@ -43,9 +46,34 @@ router.post("/", async (req, res) => {
     customer: customer.id, 
   });
 
-  res.send({
+  res.send({ 
     clientSecret: paymentIntent.client_secret,
   });
 }); 
+
+router.post('/deliveryInstructions', auth, async(req, res) => {
+  try {
+    const { meetOption, instructions, address} = req.body
+    const userId = req.user.id;
+    const orders = DeliveryOrder.findOne({_id: userId});
+  
+    if(!orders){
+      const deliveryOrders = new DeliveryOrder({
+        deliveryInformation: {
+          instructions,
+          meetOption,
+          address
+        }
+      })
+    }else {
+     
+    }
+
+
+  } catch (error) {
+    
+  }
+  
+})
 
 module.exports = router;

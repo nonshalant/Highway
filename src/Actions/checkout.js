@@ -1,5 +1,5 @@
 import axios from "axios"
-import { COMPLETE_PURCHASE } from "./types"
+import { COMPLETE_PURCHASE, DELIVERY_INSTRUCTIONS } from "./types"
 
 export const createPaymentIntentAction = (customerDetails) => async dispatch => {
     try {
@@ -12,8 +12,17 @@ export const createPaymentIntentAction = (customerDetails) => async dispatch => 
 
 export const handlePaymentSuccess = () => async dispatch => {
     try {
-        const response = await axios.post('http://localhost:5000/payment-success')
+        await axios.post('http://localhost:5000/payment-success', {})
     } catch (error) {
         console.error(error);
     }
 } 
+
+export const saveDeliveryInstructions = (deliveyInstructions) => async dispatch => {
+    try {
+        console.log(deliveyInstructions)
+       dispatch({type: DELIVERY_INSTRUCTIONS, payload: deliveyInstructions})
+    } catch (error) {
+        console.error(error);
+    }
+}

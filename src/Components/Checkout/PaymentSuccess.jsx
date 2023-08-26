@@ -14,7 +14,7 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
   const [deliveryTo, setDeliveryTo] = useState('');
   const deliveryAddress = useSelector(state => state.profile.address);
- 
+
   useEffect(()=>{
     if(!localStorage.token){
       navigate('/');
@@ -41,7 +41,7 @@ const PaymentSuccess = () => {
               </div>
               <div className="delivery-progress">
                 <div className="progress-bar">
-                  <RiCheckboxBlankCircleLine />
+                  <BsFillCircleFill />
                   <p>Pending</p>
                 </div>
                 <div className="progress-bar">

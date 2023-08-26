@@ -1,12 +1,6 @@
 const mongoose = require("mongoose")
 
 const ProfileSchema = new mongoose.Schema({
-    // address: {
-    //     streetAddress: String,
-    //     aptSuiteFloor: String,
-    //     city: String,
-    //     zip: String,
-    // },
     address: String,
     cart: {
         inventory: [
@@ -45,6 +39,10 @@ const ProfileSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
+    },
+    orders: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'deliveryOrder'
     },
     date:{
         type: Date,

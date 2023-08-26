@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
-import logo from '../../images/NicheLogoT.png'
+import logo from '../../images/[removal.ai]_68a84044-d6c8-4a74-9202-4b0f8c39674a-2.png'
 import './navigation.css'
 import {AiFillHome} from 'react-icons/ai'
 import { FaUserAlt} from 'react-icons/fa'
