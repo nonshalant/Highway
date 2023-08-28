@@ -54,18 +54,18 @@ app.listen(PORT, ()=>{
 });  
 
 // SOCKET IO SERVER 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-const io = new Server(server, {
-    // cors: {
-    //     origin: 'http://localhost:3000',
-    //     methods: ["GET", "POST"]
-    // }
-});
+// const io = new Server(server, {
+//     // cors: {
+//     //     origin: 'http://localhost:3000',
+//     //     methods: ["GET", "POST"]
+//     // }
+// });
 
-io.on('connection', (socket)=>{
-    console.log("user connected", `${socket.id}`)
-})
+// io.on('connection', (socket)=>{
+//     console.log("user connected", `${socket.id}`)
+// })
 
 server.listen(8000, ()=>{
     console.log('server is running')
