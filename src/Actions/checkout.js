@@ -3,7 +3,7 @@ import { COMPLETE_PURCHASE, DELIVERY_INSTRUCTIONS } from "./types"
 
 export const createPaymentIntentAction = (customerDetails) => async dispatch => {
     try {
-        const response = await axios.post('https://technotes.onrender/create-payment-intent', {customerDetails})
+        const response = await axios.post('https://highway-client.onrender/create-payment-intent', {customerDetails})
         dispatch({type: COMPLETE_PURCHASE, payload: response.data})
     } catch (error) {
         console.error(error)
@@ -12,7 +12,7 @@ export const createPaymentIntentAction = (customerDetails) => async dispatch => 
 
 export const handlePaymentSuccess = () => async dispatch => {
     try {
-        await axios.post('https://technotes.onrender/payment-success', {})
+        await axios.post('https://highway-client.onrender/payment-success', {})
     } catch (error) {
         console.error(error);
     }
