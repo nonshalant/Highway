@@ -31,10 +31,6 @@ const PaymentSuccess = () => {
     };
   },[deliveryAddress])
 
-  useEffect(()=>{
-    socket.emit('message')
-  },[])
-
   return (
     <>
       {localStorage.token && <Navigation /> }
