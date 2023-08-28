@@ -18,10 +18,10 @@ const PORT = process.env.PORT || 5000
 
 // Middleware 
 app.use(express.json({extended: true}))
-const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your frontend domain
-    credentials: true, // Allow credentials (cookies)
-};
+// const corsOptions = {
+//     origin: 'localhost:3000', // Replace with your frontend domain
+//     credentials: true, // Allow credentials (cookies)
+// };
 
 // Configure session store 
 app.use(cors(corsOptions));
@@ -57,10 +57,10 @@ app.listen(PORT, ()=>{
 const server = http.createServer(app);
 
 const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ["GET", "POST"]
-    }
+    // cors: {
+    //     origin: 'http://localhost:3000',
+    //     methods: ["GET", "POST"]
+    // }
 });
 
 io.on('connection', (socket)=>{

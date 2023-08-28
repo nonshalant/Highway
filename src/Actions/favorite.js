@@ -10,11 +10,11 @@ export const toggleFavorite = (toggle, storeDetails) => async dispatch => {
         },
       };
   
-      await axios.post('http://localhost:5000/favorite', { storeDetails }, config);
+      await axios.post('https://technotes.onrender/favorite', { storeDetails }, config);
 
     }else { 
       const {storeName} = storeDetails;
-      await axios.delete(`http://localhost:5000/favorite/${storeName}`)
+      await axios.delete(`https://technotes.onrender/favorite/${storeName}`)
     }
 
   } catch (error) {
@@ -24,7 +24,7 @@ export const toggleFavorite = (toggle, storeDetails) => async dispatch => {
 
 export const fetchFavoriteStores = () => async dispatch => {
   try {
-    const response = await axios.get('http://localhost:5000/favorite');
+    const response = await axios.get('https://technotes.onrender/favorite');
     dispatch({type: FETCH_FAVORITE_STORES, payload: response.data}); 
   } catch (error) {
     console.error(error) 

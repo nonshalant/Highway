@@ -4,7 +4,7 @@ import { PROFILE_ERROR, GET_PROFILE  } from "./types";
 // get current users profile
 export const getCurrentProfile = () => async dispatch => {
     try {
-        const response = await axios.get('http://localhost:5000/profile/me')
+        const response = await axios.get('https://technotes.onrender/profile/me')
         dispatch({  
             type: GET_PROFILE,
             payload: response.data
@@ -26,7 +26,7 @@ export const createAProfile = (formData) =>async dispatch =>{
             }
         }
 
-        const response = await axios.post('http://localhost:5000/profile', formData, config)
+        const response = await axios.post('https://technotes.onrender/profile', formData, config)
 
         dispatch({ 
             type: GET_PROFILE,

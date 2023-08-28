@@ -36,7 +36,7 @@ function App() {
     }
   }, [clientSecretFromRedux]);
   
-  const stripePromise = loadStripe("pk_test_51MIzYED8fYLB50BOZELzSLWJgl9FBddpEOQNrCDJmavVB4504mpVPulnRj2R0Pe6qqU41DQ10jIjuVGu5vu1Ct0o00MOLHkOuy");
+  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_TEST_KEY);
 
   const appearance = {
     theme: 'stripe',

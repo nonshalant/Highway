@@ -6,7 +6,7 @@ const Profile = require("../../models/Profile");
 
 // add to env file
 const stripe = require("stripe")
-("sk_test_51MIzYED8fYLB50BOmp38wFzqPNOR8IXI1jMV5PkNOwVWRmhCMQIi6npi0n4mAKmFunjRu5i8iZlkVwS0OdtiDuax0057bWdFNC"); 
+(process.env.REACT_APP_STRIPE_API_TEST_KEY); 
 
 const calculateOrderAmount = (totalAmount) => {
   const total = totalAmount * 100;

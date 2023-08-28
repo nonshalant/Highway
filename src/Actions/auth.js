@@ -19,7 +19,7 @@ export const loadUser = () => async dispatch =>{
     };
 
     try {
-        const res = await axios.get('http://localhost:5000/auth')
+        const res = await axios.get('https://technotes.onrender/auth')
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -38,7 +38,7 @@ export const register = ({fullName, userName, email, userPassword, userNumber}) 
     try{
         const res = await axios({ 
             method: 'post',
-            url: 'http://localhost:5000/user/signup',
+            url: 'https://technotes.onrender/user/signup',
             data: body,
             headers: {
                 "Content-Type": "application/json"
@@ -66,7 +66,7 @@ export const loginAuth = (email, userPassword) => async dispatch => {
         const body = JSON.stringify({email, userPassword});
         const res = await axios({ 
             method: 'post',
-            url: 'http://localhost:5000/auth',
+            url: 'https://technotes.onrender/auth',
             data: body,
             headers: {
                 "Content-Type": "application/json"
