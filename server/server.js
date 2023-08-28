@@ -4,8 +4,7 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 const session = require('express-session');
 const crypto = require('crypto');
-const sessionSecret = crypto.randomBytes(32).toString('hex');
-require('dotenv').config();
+const sessionSecret = crypto.randomBytes(32).toString('hex');;
 const http = require('http');
 const {Server} = require('socket.io');
 
