@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb://localhost:27017/onTheGrow",
+    "mongoURI": "mongodb+srv://shamirg:Nonshalant98@cluster0.g6ay98p.mongodb.net/?retryWrites=true&w=majority",
     "jwtSecret": "mysecrettoken" 
 }
