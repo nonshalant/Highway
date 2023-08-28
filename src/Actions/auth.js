@@ -19,7 +19,7 @@ export const loadUser = () => async dispatch =>{
     };
 
     try {
-        const res = await axios.get('https://highway-client.onrender/auth')
+        const res = await axios.get('https://highway-client.onrender.com/auth')
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -38,7 +38,7 @@ export const register = ({fullName, userName, email, userPassword, userNumber}) 
     try{
         const res = await axios({ 
             method: 'post',
-            url: 'https://highway-client.onrender/user/signup',
+            url: 'https://highway-client.onrender.com/user/signup',
             data: body,
             headers: {
                 "Content-Type": "application/json"
@@ -66,7 +66,7 @@ export const loginAuth = (email, userPassword) => async dispatch => {
         const body = JSON.stringify({email, userPassword});
         const res = await axios({ 
             method: 'post',
-            url: 'https://highway-client.onrender/auth',
+            url: 'https://highway-client.onrender.com/auth',
             data: body,
             headers: {
                 "Content-Type": "application/json"

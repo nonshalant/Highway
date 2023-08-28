@@ -4,7 +4,7 @@ import { PROFILE_ERROR, GET_PROFILE  } from "./types";
 // get current users profile
 export const getCurrentProfile = () => async dispatch => {
     try {
-        const response = await axios.get('https://highway-client.onrender/profile/me')
+        const response = await axios.get('https://highway-client.onrender.com/profile/me')
         dispatch({  
             type: GET_PROFILE,
             payload: response.data
@@ -26,7 +26,7 @@ export const createAProfile = (formData) =>async dispatch =>{
             }
         }
 
-        const response = await axios.post('https://highway-client.onrender/profile', formData, config)
+        const response = await axios.post('https://highway-client.onrender.com/profile', formData, config)
 
         dispatch({ 
             type: GET_PROFILE,

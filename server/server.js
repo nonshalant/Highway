@@ -67,6 +67,6 @@ app.listen(PORT, ()=>{
 //     console.log("user connected", `${socket.id}`)
 // })
 
-server.listen(8000, ()=>{
-    console.log('server is running')
-});
+// server.listen(8000, ()=>{
+//     console.log('server is running')
+// });
