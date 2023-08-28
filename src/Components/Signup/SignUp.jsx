@@ -55,13 +55,11 @@ const SignUp =({setAlert, register, isAuthenticated})=> {
 
                     <input required minLength='6' type="text" name="userName" id="userName" placeholder='Username' onChange={(e)=>handleChange(e)} value={userName}/>
 
-                    <input required minLength='8' type="password" name="userPassword" id="userPassword" placeholder='Password' onChange={(e)=>handleChange(e)} value={userPassword}/>
+                    <input required minLength='8' type="password" name="userPassword" id="userPassword" placeholder='Password'autoComplete='new-password' onChange={(e)=>handleChange(e)} value={userPassword}/>
 
                     <input required type="password" name="userPassword2" id="userPassword2" placeholder='Retype Password' onChange={(e)=>handleChange(e)} value={userPassword2}/>
 
                     <input required type="text" name="userNumber" id="userNumber" placeholder="Enter Your Number" onChange={(e)=>handleChange(e)} value={userNumber}/>
-
-                    <input required type="text" name="userNumber" id="userNumber" placeholder="Enter Your Delivery Address" onChange={(e)=>handleChange(e)} value={userNumber}/>
 
                     <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>
                     <button>Sign Up</button>
