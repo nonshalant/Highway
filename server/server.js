@@ -24,7 +24,7 @@ app.use(express.json({extended: true}))
 // };
 
 // Configure session store 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(session({
     secret: sessionSecret,
     resave: false,

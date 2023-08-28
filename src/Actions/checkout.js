@@ -20,7 +20,6 @@ export const handlePaymentSuccess = () => async dispatch => {
 
 export const saveDeliveryInstructions = (deliveyInstructions) => async dispatch => {
     try {
-        console.log(deliveyInstructions)
        dispatch({type: DELIVERY_INSTRUCTIONS, payload: deliveyInstructions})
     } catch (error) {
         console.error(error);
