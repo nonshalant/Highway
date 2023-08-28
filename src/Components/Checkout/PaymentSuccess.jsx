@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
-import Footer from '../Footer/Footer'
-import {BsFillCircleFill} from 'react-icons/bs'
+import Footer from '../Footer/Footer';
+import {BsFillCircleFill} from 'react-icons/bs';
 import {RiCheckboxBlankCircleLine} from 'react-icons/ri'
 import { useDispatch, useSelector } from 'react-redux';
 import { handlePaymentSuccess } from '../../Actions/checkout';
 import Map from '../Map/Map';
 import { getUserAddress } from '../../Actions/address';
+import io from 'socket.io-client';
+const socket = io.connect('http://localhost:8000');
 
 const PaymentSuccess = () => {
   const dispatch = useDispatch();
@@ -23,12 +25,16 @@ const PaymentSuccess = () => {
     dispatch(getUserAddress())
   },[navigate]);
 
-
   useEffect(()=>{
     if(deliveryAddress && deliveryAddress.address){
-    setDeliveryTo(deliveryAddress.address)
-  }
+      setDeliveryTo(deliveryAddress.address)
+    };
   },[deliveryAddress])
+
+  useEffect(()=>{
+    socket.emit('message')
+  },[])
+
   return (
     <>
       {localStorage.token && <Navigation /> }

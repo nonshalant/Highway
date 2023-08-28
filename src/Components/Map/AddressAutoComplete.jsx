@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import usePlacesAutoComplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
+import usePlacesAutoComplete from 'use-places-autocomplete';
 
 const AddressAutocomplete = ({ setAddressTest }) => {
   const [address, setAddress] = useState('');

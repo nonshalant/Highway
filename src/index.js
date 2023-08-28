@@ -21,7 +21,7 @@ root.render(
 
 // Move the Google Maps Places API script tag here
 const googleMapsScript = document.createElement('script');
-googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBK4YJb0SdVHgXnx0xy5wZatXAwlrLqzbQ&libraries=places`;
+googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`;
 googleMapsScript.async = true;
 googleMapsScript.defer = true;
 document.body.appendChild(googleMapsScript);

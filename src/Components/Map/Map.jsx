@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { getGeocode, getLatLng } from "use-places-autocomplete";
 import './map.css';
-import { Combobox, ComboboxPopover, ComboboxInput, ComboboxList, ComboboxOption } from '@reach/combobox';
 
 const Map = ({ deliveryAddress }) => {
+  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_API_KEY
   const { isLoaded } = useLoadScript({  
-    googleMapsApiKey: 'AIzaSyBK4YJb0SdVHgXnx0xy5wZatXAwlrLqzbQ',
+    googleMapsApiKey: googleMapsApiKey,
+    libraries: ['places']
   });
 
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
+  const [directionsResponse, setdirectionsResponse] = useState(null);
+  const [distance, setDistance] = useState('');
+  const [duration, setduration] = useState('')
+  const originRef = useRef;
+  const destinationRef = useRef;
 
   useEffect(() => {
     if (!isLoaded) return;
