@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://shamirg:Nonshalant98@cluster0.g6ay98p.mongodb.net/?retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://shamirg:Nonshalant98@cluster0.g6ay98p.mongodb.net/highWay?retryWrites=true&w=majority",
     "jwtSecret": "mysecrettoken" 
 }
