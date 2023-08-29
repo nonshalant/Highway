@@ -1,7 +1,7 @@
 const express = require('express');  
 const routes = require('./Routes/api/api');    
 const connectDB = require('./config/db');
-// const cors = require('cors');
+const cors = require('cors');
 // const session = require('express-session');
 // const crypto = require('crypto');
 // const sessionSecret = crypto.randomBytes(32).toString('hex');;
