@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000
 // Middleware 
 app.use(express.json({extended: true}))
 const corsOptions = {
-    origin: 'https://highway-client.onrender.com',
+    origin: process.env.PORT || 'https://highway-client.onrender.com',
     credentials: true,
 };
 
@@ -66,7 +66,3 @@ app.listen(PORT, ()=>{
 // io.on('connection', (socket)=>{
 //     console.log("user connected", `${socket.id}`)
 // })
-
-// server.listen(8000, ()=>{
-//     console.log('server is running')
-// });
