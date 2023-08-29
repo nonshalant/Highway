@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000
 // Middleware 
 app.use(express.json({extended: true}))
 const corsOptions = {
-    origin: process.env.PORT || 'https://highway-client.onrender.com',
+    origin: 10000 || 'https://highway-client.onrender.com',
     credentials: true,
 };
 
