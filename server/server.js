@@ -2,9 +2,6 @@ const express = require('express');
 const routes = require('./Routes/api/api');    
 const connectDB = require('./config/db');
 const cors = require('cors');
-// const session = require('express-session');
-// const crypto = require('crypto');
-// const sessionSecret = crypto.randomBytes(32).toString('hex');;
 // const http = require('http');
 // const {Server} = require('socket.io');
 
@@ -24,24 +21,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-app.options('/auth', cors(corsOptions), (req, res) => {
-    // Set appropriate CORS headers
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.sendStatus(200); // Respond with a 200 status
-});
-
-// app.use(session({
-//     secret: sessionSecret,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24 * 7, // Set the session cookie's maximum age (e.g., 1 week)
-//         secure: false, // Set to true if you are using HTTPS
-//         httpOnly: true, // Recommended for security reasons
-//     },
-// }));
 
 // Defining the Restfull Routes  
 app.use('/user', require('./Routes/api/users'));
