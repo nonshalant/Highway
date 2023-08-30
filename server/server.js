@@ -18,13 +18,13 @@ const PORT = process.env.PORT || 5000
 
 // Middleware 
 app.use(express.json({extended: true}))
-// const corsOptions = {
-//     origin: 10000 || 'https://highway-client.onrender.com',
-//     credentials: true,
-// };
+const corsOptions = {
+    origin: 'https://highway-client.onrender.com:5000',
+    credentials: true,
+};
 
 // Configure session store 
-app.use(cors());
+app.use(cors(corsOptions));
 // app.use(session({
 //     secret: sessionSecret,
 //     resave: false,
