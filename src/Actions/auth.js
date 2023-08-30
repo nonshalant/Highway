@@ -69,8 +69,8 @@ export const loginAuth = (email, userPassword) => async dispatch => {
             url: 'https://highway-client-server.onrender.com/auth',
             data: body,
             headers: {
-                "Content-Type": "application/json"
-            }
+                "Content-Type": "application/json",
+            },
         });
         dispatch({
             type: LOGIN_SUCCESS,
