@@ -54,7 +54,7 @@ app.use('/create-payment-intent', require('./Routes/api/checkout'));
 app.use('/payment-success', require('./Routes/api/success'));
 app.use(express.urlencoded({extended:false}));
 app.use(routes); 
-app.set('port', 5000)
+app.set('port', 10000)
 
 app.listen(PORT, ()=>{
     console.log('listen', PORT)   
